@@ -124,10 +124,14 @@ class RumourDetailView(tk.Frame):
             f"Status: {status}"
         )
 
+        # แสดงสถานะการตรวจสอบสำหรับทุกกรณี
         if verified is not None:
             verified_status = "True" if verified else "False"
             verified_info = f"\nVerified: {verified_status} (by {verified_by} on {verified_date})"
             detail += verified_info
+        else:
+            # แสดงว่ารอการตรวจสอบ
+            detail += "\nVerification Status: Pending (รอการตรวจสอบ)"
 
         self.detail_text.config(text=detail)
 
