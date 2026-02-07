@@ -56,7 +56,9 @@ class RumourListView(tk.Frame):
         """Set rumour data to be displayed in the list."""
         self.rumours = rumours
         self.report_counts = report_counts
+        # ล้างรายการเดิม
         self.listbox.delete(0, tk.END)
+        # เพิ่มรายการใหม่พร้อม ID, ชื่อ, จำนวนรายงาน, สถานะ
         for rumour in rumours:
             rumour_id = rumour.get("rumourId", "-")
             title = rumour.get("title", "-")

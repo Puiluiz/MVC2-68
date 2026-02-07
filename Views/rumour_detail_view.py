@@ -4,7 +4,7 @@ import tkinter as tk
 from tkinter import ttk
 from typing import TYPE_CHECKING, Dict, Optional
 
-from config import REPORT_TYPES
+from business_rules import REPORT_TYPES
 
 if TYPE_CHECKING:
     from Controllers.app_controller import AppController
@@ -89,11 +89,11 @@ class RumourDetailView(tk.Frame):
         self.rumour = rumour
         self.report_counts = report_counts
 
-        # Clear previous entry values
+        # ล้างข้อมูลเดิม
         self.report_type_combo.set("")
         self.verify_choice.set("")
 
-        # Unpack all frames first
+        # ซ่อน frames ก่อนแสดง frame ใหม่
         self.report_frame.pack_forget()
         self.verify_frame.pack_forget()
 
@@ -131,12 +131,12 @@ class RumourDetailView(tk.Frame):
 
         self.detail_text.config(text=detail)
 
-        # Show report frame if not verified (ask controller)
+        # แสดงการรายงานเฉพาะข่าวที่ยังไม่ได้ยืนยัน
         is_verified = self.controller.is_rumour_verified(rumour)
         if not is_verified:
             self.report_frame.pack(fill=tk.X, padx=0, pady=(0, 10))
 
-        # Show verify frame if user is inspector (ask controller)
+        # แสดงการยืนยันเฉพาะผู้ตรวจสอบ (inspector)
         if self.controller.is_inspector():
             self.verify_frame.pack(fill=tk.X, padx=0, pady=(0, 10))
 

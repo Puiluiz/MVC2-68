@@ -54,17 +54,19 @@ class LoginView(tk.Frame):
 
     def _login(self) -> None:
         """Handle login button click."""
+        # ดึง user ID จากช่องกรอก
         user_id = self.user_id_entry.get().strip()
         if not user_id:
             messagebox.showwarning("Warning", "Please enter User ID")
             return
 
-        # Let controller handle user validation
+        # ขอให้ controller ตรวจสอบ user ID
         user = self.controller.validate_user(user_id)
         if not user:
             messagebox.showerror("Error", f"User ID {user_id} not found")
             return
 
+        # ตั้งผู้ใช้ปัจจุบัน แล้วเรียก callback function
         self.controller.set_current_user(user_id, user)
         if self.after_login:
             self.after_login()

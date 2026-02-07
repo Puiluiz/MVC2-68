@@ -5,9 +5,7 @@ from datetime import date
 from pathlib import Path
 from typing import Dict, List, Optional
 
-# Status constants
-STATUS_PANIC = "panic"
-STATUS_NORMAL = "ปกติ"
+from business_rules import STATUS_NORMAL, STATUS_PANIC
 
 
 class RumourModel:
@@ -45,14 +43,15 @@ class RumourModel:
 
     def add_rumour(self, title: str, source: str, credibility_score: int) -> Dict:
         """Add a new rumour."""
+        # สร้างข่าวลือใหม่พร้อมค่าเริ่มต้น
         new_rumour = {
-            "rumourId": self._next_id(),
+            "rumourId": self._next_id(),      # สร้าง ID อัตโนมัติ
             "title": title,
             "source": source,
             "createdDate": date.today().isoformat(),
             "credibilityScore": credibility_score,
-            "status": STATUS_NORMAL,
-            "verified": None,
+            "status": STATUS_NORMAL,          # สถานะเริ่มต้นเป็น "ปกติ"
+            "verified": None,                 # ยังไม่ได้ยืนยัน
             "verifiedBy": None,
             "verifiedDate": None,
         }
@@ -86,14 +85,17 @@ class RumourModel:
 
     def is_panic(self, rumour: Dict) -> bool:
         """Check if a rumour is in panic status."""
+        # ตรวจสอบว่าข่าวลือมีสถานะเป็น panic หรือไม่
         return rumour.get("status") == STATUS_PANIC
 
     def is_normal(self, rumour: Dict) -> bool:
         """Check if a rumour is in normal status."""
+        # ตรวจสอบว่าข่าวลือมีสถานะเป็นปกติหรือไม่
         return rumour.get("status") == STATUS_NORMAL
 
     def _next_id(self) -> str:
         """Generate next rumour ID."""
+        # สร้าง ID ใหม่ โดยเพิ่มจาก ID ที่ใหญ่ที่สุด
         max_id = 10000000
         for rumour in self._rumours:
             rumour_id = rumour.get("rumourId", "")

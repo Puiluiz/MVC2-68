@@ -55,22 +55,26 @@ class SummaryView(tk.Frame):
         report_counts: Dict[str, int],
     ) -> None:
         """Set data for all three summary categories."""
+        # ล้างรายการทั้ง 3 หมวด
         self.panic_list.delete(0, tk.END)
         self.verified_true_list.delete(0, tk.END)
         self.verified_false_list.delete(0, tk.END)
 
+        # แสดงข่าวลือที่ฉุกเฉิน
         for rumour in panic_rumours:
             rumour_id = rumour.get("rumourId", "-")
             title = rumour.get("title", "-")
             count = report_counts.get(rumour_id, 0)
             self.panic_list.insert(tk.END, f"[{rumour_id}] {title} | reports: {count}")
 
+        # แสดงข่าวลือที่ยืนยันว่าจริง
         for rumour in verified_true_rumours:
             rumour_id = rumour.get("rumourId", "-")
             title = rumour.get("title", "-")
             count = report_counts.get(rumour_id, 0)
             self.verified_true_list.insert(tk.END, f"[{rumour_id}] {title} | reports: {count}")
 
+        # แสดงข่าวลือที่ยืนยันว่าเท็จ
         for rumour in verified_false_rumours:
             rumour_id = rumour.get("rumourId", "-")
             title = rumour.get("title", "-")

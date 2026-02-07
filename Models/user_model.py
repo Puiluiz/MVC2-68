@@ -24,6 +24,7 @@ class UserModel:
 
     def get_by_id(self, user_id: str) -> Optional[Dict]:
         """Get a user by ID."""
+        # ค้นหา user จาก ID
         for user in self._users:
             if user.get("userId") == user_id:
                 return user
@@ -31,7 +32,9 @@ class UserModel:
 
     def is_inspector(self, user_id: str) -> bool:
         """Check if a user is an inspector."""
+        # ดึง user แล้วตรวจสอบ role
         user = self.get_by_id(user_id)
         if not user:
             return False
+        # ตรวจสอบว่าเป็น inspector หรือไม่
         return user.get("role") in {"ผู้ตรวจสอบ", "inspector"}

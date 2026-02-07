@@ -34,6 +34,7 @@ class ReportModel:
 
     def get_report_counts(self) -> Dict[str, int]:
         """Get report counts for each rumour."""
+        # นับจำนวนรายงานสำหรับแต่ละข่าวลือ
         counts: Dict[str, int] = {}
         for report in self._reports:
             rumour_id = report.get("rumourId")
@@ -42,6 +43,7 @@ class ReportModel:
 
     def has_report(self, reporter_id: str, rumour_id: str) -> bool:
         """Check if a user has already reported a specific rumour."""
+        # ตรวจสอบว่า user คนนี้เคยรายงานข่าวลือนี้หรือไม่
         for report in self._reports:
             if report.get("reporterId") == reporter_id and report.get("rumourId") == rumour_id:
                 return True
@@ -49,13 +51,14 @@ class ReportModel:
 
     def add_report(self, reporter_id: str, rumour_id: str, report_type: str, description: str) -> Dict:
         """Add a new report."""
+        # สร้างรายงานใหม่พร้อมรายละเอียด
         new_report = {
-            "reportId": self._next_id(),
-            "reporterId": reporter_id,
-            "rumourId": rumour_id,
+            "reportId": self._next_id(),          # สร้าง ID อัตโนมัติ
+            "reporterId": reporter_id,            # ID ของผู้รายงาน
+            "rumourId": rumour_id,                # ID ของข่าวลือ
             "reportDate": date.today().isoformat(),
-            "reportType": report_type,
-            "description": description,
+            "reportType": report_type,            # ประเภทรายงาน
+            "description": description,           # รายละเอียดเพิ่มเติม
         }
         self._reports.append(new_report)
         self.save()
@@ -63,6 +66,7 @@ class ReportModel:
 
     def _next_id(self) -> str:
         """Generate the next report ID."""
+        # หา ID ที่ใหญ่ที่สุด แล้วสร้าง ID ถัดไป เช่น R0001, R0002, ...
         max_id = 0
         for report in self._reports:
             report_id = report.get("reportId", "")
