@@ -1,0 +1,226 @@
+[
+  {
+    "reportId": "R0001",
+    "reporterId": "U0002",
+    "rumourId": "10234567",
+    "reportDate": "2026-01-16",
+    "reportType": "ข้อมูลเท็จ",
+    "description": "ไม่มีหลักฐานทางวิทยาศาสตร์รองรับ"
+  },
+  {
+    "reportId": "R0002",
+    "reporterId": "U0004",
+    "rumourId": "10234567",
+    "reportDate": "2026-01-16",
+    "reportType": "ปลุกปั่น",
+    "description": "ทำให้ประชาชนเกิดความหวาดกลัววัคซีน"
+  },
+  {
+    "reportId": "R0003",
+    "reporterId": "U0007",
+    "rumourId": "10234568",
+    "reportDate": "2026-01-19",
+    "reportType": "ข้อมูลเท็จ",
+    "description": "ไม่มีการยืนยันจากองค์กรทางการแพทย์"
+  },
+  {
+    "reportId": "R0004",
+    "reporterId": "U0010",
+    "rumourId": "10234569",
+    "reportDate": "2026-01-21",
+    "reportType": "บิดเบือน",
+    "description": "ธนาคารมีสถานะทางการเงินปกติ"
+  },
+  {
+    "reportId": "R0005",
+    "reporterId": "U0012",
+    "rumourId": "10234569",
+    "reportDate": "2026-01-21",
+    "reportType": "ปลุกปั่น",
+    "description": "สร้างความตื่นตระหนกในระบบการเงิน"
+  },
+  {
+    "reportId": "R0006",
+    "reporterId": "U0015",
+    "rumourId": "10234570",
+    "reportDate": "2026-01-23",
+    "reportType": "ข้อมูลเท็จ",
+    "description": "ไม่มีประกาศจากรัฐบาล"
+  },
+  {
+    "reportId": "R0007",
+    "reporterId": "U0018",
+    "rumourId": "10234571",
+    "reportDate": "2026-01-26",
+    "reportType": "ข้อมูลเท็จ",
+    "description": "ผลตรวจสอบจากห้องแล็บไม่พบสารพิษ"
+  },
+  {
+    "reportId": "R0008",
+    "reporterId": "U0021",
+    "rumourId": "10234571",
+    "reportDate": "2026-01-26",
+    "reportType": "บิดเบือน",
+    "description": "ข้อมูลถูกตัดต่อจากแหล่งอื่น"
+  },
+  {
+    "reportId": "R0009",
+    "reporterId": "U0024",
+    "rumourId": "10234572",
+    "reportDate": "2026-01-29",
+    "reportType": "บิดเบือน",
+    "description": "ข้อมูลไม่ตรงกับที่ธนาคารแห่งประเทศไทยแจ้ง"
+  },
+  {
+    "reportId": "R0010",
+    "reporterId": "U0002",
+    "rumourId": "10234573",
+    "reportDate": "2026-01-31",
+    "reportType": "ข้อมูลเท็จ",
+    "description": "ไม่มีการพยากรณ์จากกรมอุตุนิยมวิทยา"
+  },
+  {
+    "reportId": "R0011",
+    "reporterId": "U0004",
+    "rumourId": "10234573",
+    "reportDate": "2026-01-31",
+    "reportType": "ปลุกปั่น",
+    "description": "สร้างความตื่นตระหนกในสังคม"
+  },
+  {
+    "reportId": "R0012",
+    "reporterId": "U0007",
+    "rumourId": "10234574",
+    "reportDate": "2026-02-02",
+    "reportType": "บิดเบือน",
+    "description": "ราคาน้ำมันถูกบิดเบือนจากความจริง"
+  },
+  {
+    "reportId": "R0013",
+    "reporterId": "U0010",
+    "rumourId": "10234575",
+    "reportDate": "2026-02-03",
+    "reportType": "ข้อมูลเท็จ",
+    "description": "ร้านอาหารได้รับการตรวจสอบและผ่านมาตรฐาน"
+  },
+  {
+    "reportId": "R0014",
+    "reporterId": "U0012",
+    "rumourId": "10234575",
+    "reportDate": "2026-02-03",
+    "reportType": "ปลุกปั่น",
+    "description": "ทำลายชื่อเสียงธุรกิจ"
+  },
+  {
+    "reportId": "R0015",
+    "reporterId": "U0015",
+    "rumourId": "10234576",
+    "reportDate": "2026-02-04",
+    "reportType": "ข้อมูลเท็จ",
+    "description": "ตำรวจยืนยันว่าไม่มีเหตุการณ์ดังกล่าว"
+  },
+  {
+    "reportId": "R0016",
+    "reporterId": "U0018",
+    "rumourId": "10234576",
+    "reportDate": "2026-02-04",
+    "reportType": "ปลุกปั่น",
+    "description": "สร้างความหวาดกลัวให้กับผู้ปกครอง"
+  },
+  {
+    "reportId": "R0017",
+    "reporterId": "U0003",
+    "rumourId": "20345679",
+    "reportDate": "2026-01-20",
+    "reportType": "บิดเบือน",
+    "description": "ดาราออกมาปฏิเสธข่าวนี้แล้ว"
+  },
+  {
+    "reportId": "R0018",
+    "reporterId": "U0005",
+    "rumourId": "20345680",
+    "reportDate": "2026-01-22",
+    "reportType": "บิดเบือน",
+    "description": "เงื่อนไขโปรโมชั่นแท้จริงแตกต่างจากที่บอก"
+  },
+  {
+    "reportId": "R0019",
+    "reporterId": "U0008",
+    "rumourId": "20345687",
+    "reportDate": "2026-02-06",
+    "reportType": "บิดเบือน",
+    "description": "นักร้องยังไม่ได้ยืนยันการมาไทย"
+  },
+  {
+    "reportId": "R0020",
+    "reporterId": "U0026",
+    "rumourId": "10234568",
+    "reportDate": "2026-01-19",
+    "reportType": "ข้อมูลเท็จ",
+    "description": "ข้อมูลขัดต่อคำแนะนำทางการแพทย์"
+  },
+  {
+    "reportId": "R0021",
+    "reporterId": "U0021",
+    "rumourId": "10234570",
+    "reportDate": "2026-01-23",
+    "reportType": "ปลุกปั่น",
+    "description": "สร้างความตื่นตระหนกโดยไม่มีหลักฐาน"
+  },
+  {
+    "reportId": "R0022",
+    "reporterId": "U0024",
+    "rumourId": "10234574",
+    "reportDate": "2026-02-02",
+    "reportType": "ปลุกปั่น",
+    "description": "กระตุ้นให้ผู้คนกักตุนน้ำมัน"
+  },
+  {
+    "reportId": "R0023",
+    "reporterId": "U0001",
+    "rumourId": "30456789",
+    "reportDate": "2026-02-07",
+    "reportType": "ข้อมูลเท็จ",
+    "description": ""
+  },
+  {
+    "reportId": "R0024",
+    "reporterId": "U0001",
+    "rumourId": "10234570",
+    "reportDate": "2026-02-07",
+    "reportType": "บิดเบือน",
+    "description": ""
+  },
+  {
+    "reportId": "R0025",
+    "reporterId": "U0001",
+    "rumourId": "20345681",
+    "reportDate": "2026-02-07",
+    "reportType": "ข้อมูลเท็จ",
+    "description": ""
+  },
+  {
+    "reportId": "R0026",
+    "reporterId": "U0001",
+    "rumourId": "10234572",
+    "reportDate": "2026-02-07",
+    "reportType": "ข้อมูลเท็จ",
+    "description": ""
+  },
+  {
+    "reportId": "R0027",
+    "reporterId": "U0001",
+    "rumourId": "10234575",
+    "reportDate": "2026-02-07",
+    "reportType": "ปลุกปั่น",
+    "description": ""
+  },
+  {
+    "reportId": "R0028",
+    "reporterId": "U0005",
+    "rumourId": "20345682",
+    "reportDate": "2026-02-07",
+    "reportType": "ข้อมูลเท็จ",
+    "description": ""
+  }
+]

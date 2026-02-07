@@ -1,0 +1,210 @@
+[
+  {
+    "userId": "U0001",
+    "name": "สมชาย ใจดี",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "somchai@example.com",
+    "password": "hashed_password_1",
+    "joinedDate": "2025-12-01"
+  },
+  {
+    "userId": "U0002",
+    "name": "สมหญิง รักษ์ดี",
+    "role": "ผู้ตรวจสอบ",
+    "email": "somying@example.com",
+    "password": "hashed_password_2",
+    "joinedDate": "2025-12-02"
+  },
+  {
+    "userId": "U0003",
+    "name": "ประยุทธ์ สุขใจ",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "prayut@example.com",
+    "password": "hashed_password_3",
+    "joinedDate": "2025-12-05"
+  },
+  {
+    "userId": "U0004",
+    "name": "วิภา มั่นคง",
+    "role": "ผู้ตรวจสอบ",
+    "email": "wipa@example.com",
+    "password": "hashed_password_4",
+    "joinedDate": "2025-12-08"
+  },
+  {
+    "userId": "U0005",
+    "name": "นิพนธ์ เจริญ",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "nipon@example.com",
+    "password": "hashed_password_5",
+    "joinedDate": "2025-12-10"
+  },
+  {
+    "userId": "U0006",
+    "name": "อรุณ สว่าง",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "arun@example.com",
+    "password": "hashed_password_6",
+    "joinedDate": "2025-12-12"
+  },
+  {
+    "userId": "U0007",
+    "name": "ชนิดา ดีงาม",
+    "role": "ผู้ตรวจสอบ",
+    "email": "chanida@example.com",
+    "password": "hashed_password_7",
+    "joinedDate": "2025-12-15"
+  },
+  {
+    "userId": "U0008",
+    "name": "ธนพล รุ่งเรือง",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "tanapol@example.com",
+    "password": "hashed_password_8",
+    "joinedDate": "2025-12-18"
+  },
+  {
+    "userId": "U0009",
+    "name": "สุภาพร ดีมาก",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "supaporn@example.com",
+    "password": "hashed_password_9",
+    "joinedDate": "2025-12-20"
+  },
+  {
+    "userId": "U0010",
+    "name": "วัชระ แข็งแรง",
+    "role": "ผู้ตรวจสอบ",
+    "email": "watchara@example.com",
+    "password": "hashed_password_10",
+    "joinedDate": "2025-12-22"
+  },
+  {
+    "userId": "U0011",
+    "name": "กัญญา สดใส",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "kanya@example.com",
+    "password": "hashed_password_11",
+    "joinedDate": "2025-12-25"
+  },
+  {
+    "userId": "U0012",
+    "name": "ไพรัช ยุติธรรม",
+    "role": "ผู้ตรวจสอบ",
+    "email": "pairat@example.com",
+    "password": "hashed_password_12",
+    "joinedDate": "2025-12-28"
+  },
+  {
+    "userId": "U0013",
+    "name": "มนัสวี เฉลียว",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "manaswee@example.com",
+    "password": "hashed_password_13",
+    "joinedDate": "2026-01-02"
+  },
+  {
+    "userId": "U0014",
+    "name": "ปิยะ ชัยชนะ",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "piya@example.com",
+    "password": "hashed_password_14",
+    "joinedDate": "2026-01-05"
+  },
+  {
+    "userId": "U0015",
+    "name": "รัตนา สง่างาม",
+    "role": "ผู้ตรวจสอบ",
+    "email": "rattana@example.com",
+    "password": "hashed_password_15",
+    "joinedDate": "2026-01-08"
+  },
+  {
+    "userId": "U0016",
+    "name": "สมบูรณ์ ถูกต้อง",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "somboon@example.com",
+    "password": "hashed_password_16",
+    "joinedDate": "2026-01-10"
+  },
+  {
+    "userId": "U0017",
+    "name": "วารุณี อ่อนหวาน",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "warunee@example.com",
+    "password": "hashed_password_17",
+    "joinedDate": "2026-01-12"
+  },
+  {
+    "userId": "U0018",
+    "name": "ชัยวัฒน์ กล้าหาญ",
+    "role": "ผู้ตรวจสอบ",
+    "email": "chaiwat@example.com",
+    "password": "hashed_password_18",
+    "joinedDate": "2026-01-15"
+  },
+  {
+    "userId": "U0019",
+    "name": "นันทนา รักงาม",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "nantana@example.com",
+    "password": "hashed_password_19",
+    "joinedDate": "2026-01-18"
+  },
+  {
+    "userId": "U0020",
+    "name": "ประสิทธิ์ ชอบธรรม",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "prasit@example.com",
+    "password": "hashed_password_20",
+    "joinedDate": "2026-01-20"
+  },
+  {
+    "userId": "U0021",
+    "name": "สุรชัย มีสุข",
+    "role": "ผู้ตรวจสอบ",
+    "email": "surachai@example.com",
+    "password": "hashed_password_21",
+    "joinedDate": "2026-01-22"
+  },
+  {
+    "userId": "U0022",
+    "name": "แสงดาว สวยงาม",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "sangdao@example.com",
+    "password": "hashed_password_22",
+    "joinedDate": "2026-01-25"
+  },
+  {
+    "userId": "U0023",
+    "name": "ธีรพล เข้มแข็ง",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "teerapol@example.com",
+    "password": "hashed_password_23",
+    "joinedDate": "2026-01-28"
+  },
+  {
+    "userId": "U0024",
+    "name": "ปาริชาติ หอมหวาน",
+    "role": "ผู้ตรวจสอบ",
+    "email": "parichat@example.com",
+    "password": "hashed_password_24",
+    "joinedDate": "2026-02-01"
+  },
+  {
+    "userId": "U0025",
+    "name": "วีระ ชนะมาร",
+    "role": "ผู้ใช้ทั่วไป",
+    "email": "weera@example.com",
+    "password": "hashed_password_25",
+    "joinedDate": "2026-02-03"
+  },
+  {
+    "userId": "U0026",
+    "name": "จิราพร มีเมตตา",
+    "role": "ผู้ตรวจสอบ",
+    "email": "jiraporn@example.com",
+    "password": "hashed_password_26",
+    "joinedDate": "2026-02-05"
+  }
+]
