@@ -4,7 +4,18 @@ import tkinter as tk
 from tkinter import messagebox
 from typing import Dict, Optional
 
-from business_rules import PANIC_THRESHOLD, STATUS_NORMAL, STATUS_PANIC
+from business_rules import (
+    PANIC_THRESHOLD,
+    REPORT_TYPES,
+    STATUS_NORMAL,
+    STATUS_PANIC,
+    can_accept_report,
+    can_verify_rumour,
+    filter_rumours_by_status,
+    filter_rumours_by_verified,
+    get_status_display,
+    should_trigger_panic,
+)
 from config import DATA_DIR
 from Models import ReportModel, RumourModel, UserModel
 from Views import LoginView, RumourDetailView, RumourListView, SummaryView
@@ -16,7 +27,7 @@ class AppController:
     def __init__(self, root: tk.Tk) -> None:
         """Initialize the application controller."""
         self.root = root
-        # โหลด Models ทั้ง 3 ประเภท จากไฟล์ JSON
+        # โหลด Models จากไฟล์ JSON
         self.rumour_model = RumourModel(DATA_DIR / "rumours.json")
         self.report_model = ReportModel(DATA_DIR / "reports.json")
         self.user_model = UserModel(DATA_DIR / "users.json")
@@ -25,7 +36,7 @@ class AppController:
         self.current_user_id: Optional[str] = None
         self.current_user: Optional[Dict] = None
 
-        # สร้าง Views ทั้ง 4 หน้า
+        # สร้าง Views 
         self.login_view = LoginView(root, self)
         self.list_view = RumourListView(root, self)
         self.detail_view = RumourDetailView(root, self)
@@ -34,7 +45,6 @@ class AppController:
         for view in (self.login_view, self.list_view, self.detail_view, self.summary_view):
             view.grid(row=0, column=0, sticky="nsew")
 
-        # Set login callback and show login screen
         self.login_view.after_login = self.show_list_view
         self.login_view.tkraise()
 
@@ -65,9 +75,9 @@ class AppController:
         report_counts = self.report_model.get_report_counts()
         rumours = self.rumour_model.get_all()
         # แยกข่าวลือตามประเภท: ฉุกเฉิน, ยืนยันจริง, ยืนยันเท็จ
-        panic_rumours = [r for r in rumours if r.get("status") == STATUS_PANIC]
-        verified_true_rumours = [r for r in rumours if r.get("verified") is True]
-        verified_false_rumours = [r for r in rumours if r.get("verified") is False]
+        panic_rumours = filter_rumours_by_status(rumours, STATUS_PANIC)
+        verified_true_rumours = filter_rumours_by_verified(rumours, True)
+        verified_false_rumours = filter_rumours_by_verified(rumours, False)
         self.summary_view.set_data(panic_rumours, verified_true_rumours, verified_false_rumours, report_counts)
         self.summary_view.tkraise()  # แสดง summary view หน้าจอ
 
@@ -78,20 +88,20 @@ class AppController:
             messagebox.showerror("Error", "Please login first")
             return
 
-        # ตรวจสอบว่าข่าวลือนั้นมีอยู่จริง
-        rumour = self.rumour_model.get_by_id(rumour_id)
+        # ตรวจสอบความถูกต้องของ rumour_id
+        rumour = self.validate_rumour_id(rumour_id)
         if not rumour:
             messagebox.showerror("Error", "Rumour not found")
             return
 
-        # ข่าวลือที่ยืนยันแล้วไม่สามารถรายงานเพิ่ม
-        if self.rumour_model.is_verified(rumour):
-            messagebox.showwarning("Warning", "Verified rumours cannot be reported")
-            return
-
-        # ผู้ใช้แต่ละคนรายงานข่าวได้เพียง 1 ครั้ง
-        if self.report_model.has_report(self.current_user_id, rumour_id):
-            messagebox.showwarning("Warning", "You already reported this rumour")
+        # ตรวจสอบว่าข่าวลือสามารถรับรายงาน
+        is_verified = self.rumour_model.is_verified(rumour)
+        user_reported = self.report_model.has_report(self.current_user_id, rumour_id)
+        if not can_accept_report(rumour, user_reported, is_verified):
+            if is_verified:
+                messagebox.showwarning("Warning", "Verified rumours cannot be reported")
+            else:
+                messagebox.showwarning("Warning", "You already reported this rumour")
             return
 
         if not report_type:
@@ -101,8 +111,8 @@ class AppController:
         # บันทึกรายงาน
         self.report_model.add_report(self.current_user_id, rumour_id, report_type, description)
         report_counts = self.report_model.get_report_counts()
-        # ถ้ารายงานทั้งหมด >= 3 ให้เปลี่ยนสถานะเป็น panic
-        if report_counts.get(rumour_id, 0) >= PANIC_THRESHOLD:
+        # ตรวจสอบว่าควรเปลี่ยนสถานะเป็น panic หรือไม่
+        if should_trigger_panic(report_counts.get(rumour_id, 0)):
             self.rumour_model.update_status(rumour_id, STATUS_PANIC)
 
         messagebox.showinfo("Success", "Report submitted")
@@ -115,8 +125,8 @@ class AppController:
             messagebox.showerror("Error", "Please login first")
             return
 
-        # เฉพาะ inspector เท่านั้นที่สามารถยืนยันข่าวได้
-        if not self.user_model.is_inspector(self.current_user_id):
+        # ตรวจสอบว่าผู้ใช้สามารถยืนยันข่าวลือได้หรือไม่
+        if not can_verify_rumour({}, self.is_inspector()):
             messagebox.showwarning("Warning", "Only inspectors can verify rumours")
             return
 
@@ -125,12 +135,13 @@ class AppController:
             messagebox.showwarning("Warning", "Select a verification result")
             return
 
-        rumour = self.rumour_model.get_by_id(rumour_id)
+        # ตรวจสอบความถูกต้องของ rumour_id
+        rumour = self.validate_rumour_id(rumour_id)
         if not rumour:
             messagebox.showerror("Error", "Rumour not found")
             return
 
-        # อัปเดตผลยืนยัน (ไม่เปลี่ยน status)
+        # อัปเดตผลยืนยัน
         verified_result = decision == "true"
         if not self.rumour_model.update_verified(rumour_id, verified_result, self.current_user_id):
             messagebox.showerror("Error", "Failed to verify rumour")
@@ -142,15 +153,25 @@ class AppController:
     def get_status_label(self, rumour: Dict) -> str:
         """Get human-readable status label."""
         status = rumour.get("status", STATUS_NORMAL)
-        if status == STATUS_PANIC:
-            return "panic"
-        if status == STATUS_NORMAL:
-            return "ปกติ"
-        return str(status)
+        return get_status_display(status)
 
     def is_rumour_verified(self, rumour: Dict) -> bool:
         """Check if a rumour has been verified (for use by views)."""
         return self.rumour_model.is_verified(rumour)
+
+    def validate_rumour_id(self, rumour_id: str) -> Optional[Dict]:
+        """Validate rumour ID and return rumour data, or None if not found."""
+        return self.rumour_model.get_by_id(rumour_id)
+
+    def can_show_report_frame(self, rumour: Dict) -> bool:
+        """Check if report frame should be shown for this rumour."""
+        # แสดงการรายงานเฉพาะข่าวที่ยังไม่ได้ยืนยัน
+        return not self.is_rumour_verified(rumour)
+
+    def can_show_verify_frame(self) -> bool:
+        """Check if verify frame should be shown (only for inspectors)."""
+        # แสดงการยืนยันเฉพาะผู้ตรวจสอบ
+        return self.is_inspector()
 
     def set_current_user(self, user_id: str, user: Dict) -> None:
         """Set the current logged-in user."""

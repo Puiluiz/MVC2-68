@@ -132,12 +132,11 @@ class RumourDetailView(tk.Frame):
         self.detail_text.config(text=detail)
 
         # แสดงการรายงานเฉพาะข่าวที่ยังไม่ได้ยืนยัน
-        is_verified = self.controller.is_rumour_verified(rumour)
-        if not is_verified:
+        if self.controller.can_show_report_frame(rumour):
             self.report_frame.pack(fill=tk.X, padx=0, pady=(0, 10))
 
-        # แสดงการยืนยันเฉพาะผู้ตรวจสอบ (inspector)
-        if self.controller.is_inspector():
+        # แสดงการยืนยันเฉพาะผู้ตรวจสอบ
+        if self.controller.can_show_verify_frame():
             self.verify_frame.pack(fill=tk.X, padx=0, pady=(0, 10))
 
     def _submit_report(self) -> None:
